@@ -1,11 +1,12 @@
 angular.module('omdb', [])
     .factory('omdbApi', function ($http, $q) {
         var service = {};
-        var baseUrl = 'http://www.omdbapi.com/';
+        var baseUrl = 'http://www.omdbapi.com/?&1&';
 
         service.search = function (query) {
             var deferred = $q.defer();
-            $http.get(baseUrl + 't=' + encodeURIComponent(query))
+
+            $http.get(baseUrl + 's=' + encodeURIComponent(query))
                 .success(function (data) {
                     deferred.resolve(data);
                 });
